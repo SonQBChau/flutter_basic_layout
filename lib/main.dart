@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_basic_layout/chat_item_screen.dart';
 import 'package:flutter_basic_layout/card_screen.dart';
+import 'package:flutter_basic_layout/chat_item_screen.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,45 +35,54 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Column(
             children: <Widget>[
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, 'chat');
-                },
-                splashColor: Colors.green,
-                highlightColor: Colors.lightGreen,
-                child: Container(
-                  width: double.infinity,
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    border: Border.all(color: Colors.green),
-                  ),
-                  child: Text('Chat Item'),
-                ),
-              ),
+              buildInkWellChat(context),
               SizedBox(
                 height: 5,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, 'card');
-                },
-                splashColor: Colors.green,
-                highlightColor: Colors.lightGreen,
-                child: Container(
-                  width: double.infinity,
-                  height: 40,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                    border: Border.all(color: Colors.green),
-                  ),
-                  child: Text('Card'),
-                ),
-              ),
+              buildInkWellCard(context),
             ],
           ),
         ));
   }
+
+  InkWell buildInkWellCard(BuildContext context) {
+    return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, 'card');
+              },
+              splashColor: Colors.green,
+              highlightColor: Colors.lightGreen,
+              child: Container(
+                width: double.infinity,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  border: Border.all(color: Colors.green),
+                ),
+                child: Text('Card'),
+              ),
+            );
+  }
+
+  InkWell buildInkWellChat(BuildContext context) {
+    return InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, 'chat');
+              },
+              splashColor: Colors.green,
+              highlightColor: Colors.lightGreen,
+              child: Container(
+                width: double.infinity,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  border: Border.all(color: Colors.green),
+                ),
+                child: Text('Chat Item'),
+              ),
+            );
+  }
 }
+
